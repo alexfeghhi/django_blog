@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta charset="UTF-8">
+        <meta name="description" content="Alexander Feghhi's portfolio website">
+        <meta name="keywords" content="Alex Feghhi, CSS, JavaScript">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /><!-- Link to menu icon -->
+        <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}?{% now "U" %}"><!-- Remove? stuff later -->
+        <script src="{% static 'portfolio/javascript/script.js' %}?{% now "U" %}"></script><!-- Remove? stuff later -->
+        <title>{% block title %}Base{% endblock title %}</title>
+    </head>
+    <body>
+        <header class="header lora">
+            <nav class="header__navbar">
+                <div class="header__navbar__logo px24">
+                    <span>AF</span>
+                </div>
+                <ul class="header__navbar__list px28 nobullets">
+                    <li><a class="header__navbar__list__link" href={% url 'home' %}>Home</a></li>
+                    <li><a class="header__navbar__list__link" href={% url 'blog' %}>Blog</a></li>
+                    <li><a class="header__navbar__list__link" href={% url 'projects' %}>Projects</a></li>
+                </ul>
+                <address class="header__navbar__contact lora px24">
+                    <a class="header__navbar__contact__link"href={% url 'contact' %}>Contact</a>
+                </address>
+                <div class="dropdown__container">
+                    <button onclick="toggleTopNav()" class="dropdown__button dropdown__target empty-button">
+                        Menu
+                        <img src="{% static 'portfolio/images/menu_icon.svg' %}" class="dropdown__button__icon dropdown__target">
+                    </button>
+                    <div id="topDropdown" class="dropdown__content">
+                      <a href={% url 'home' %}>Home</a>
+                      <a href={% url 'blog' %}>Blog</a>
+                      <a href={% url 'projects' %}>Projects</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="main">
+            <div class="main__left">
+            </div>
+            <div class="main__center">
+                <article>
+                    {% block content %}
+                        Hello World
+                    {% endblock content %}
+                </article>
+            </div>
+            <div class="main__right">
+            </div>
+        </main>
+        <footer class="footer">
+            <span class="lora-18rem centered">If you are interested in the ideas above or<br> 
+                have a proposal, <a class="footer__cta__contact__link"href={% url 'contact' %}>contact</a> me</span>
+            <span class="roboto-14rem lightgray">Copyright © 2024 Alexander Feghhi</span> 
+            <nav class="footer__navbar">
+                <div class="footer__navbar__logo lightgray px24">
+                    <span>AF</span>
+                </div>
+                <ul class="footer__navbar__list lightgray px28 strip">
+                    <li><a class="footer__navbar__list__link" href={% url 'home' %}>Home</a></li>
+                    <li><a class="footer__navbar__list__link" href={% url 'blog' %}>Blog</a></li>
+                    <li><a class="footer__navbar__list__link" href={% url 'projects' %}>Projects</a></li>
+                </ul>
+                <address class="footer__navbar__contact lightgray px28">
+                    <a class="footer__navbar__contact__link"href={% url 'contact' %}>Contact</a>
+                </address>
+                <div class="dropdown__container lightgray">
+                    <button onclick="toggleBotNav()" class="dropdown__button dropdown__target empty-button">
+                        Menu
+                        <img src="{% static 'portfolio/images/menu_icon-gray.svg' %}" class="dropdown__button__icon dropdown__target">
+                    </button>
+                    <div id="botDropdown" class="dropdown__content -bot">
+                      <a href={% url 'home' %}>Home</a>
+                      <a href={% url 'blog' %}>Blog</a>
+                      <a href={% url 'projects' %}>Projects</a>
+                    </div>
+                </div>
+            </nav>
+        </footer>
+    </body>
+</html>

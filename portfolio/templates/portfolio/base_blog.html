@@ -1,0 +1,23 @@
+{% extends "portfolio/base.html" %}
+
+{% block main %}
+<main class="main-blog">
+    <h1 class="title-blogpage">Alex's Blog Posts</h1>
+    <div class="postslist">
+        {% for post in posts %}
+            <div class="postcard">
+                <div class="image-blog"></div>
+                <div class="postcard__info">
+                    <h2 class="title-blogpost">{{ post.title }}</h2>
+                    <p class="postcard__info__summary">{{ post.summary }}</p>
+                </div>
+                <div class="postcard__info__meta">
+                    <p>{{ post.author }}</p>
+                    <p>{{ post.pub_date }}</p>
+                    <p><a href="{% url 'blog_post' post.slug %}">Link</a></p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock main %}
